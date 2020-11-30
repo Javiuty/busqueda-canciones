@@ -1,5 +1,12 @@
 // Variables
 let container = document.querySelector(".canciones__main-container");
+let addBtn = document.querySelector("#addBtn");
+
+// Event Listeners
+addBtn.addEventListener("click", submitCancion);
+
+// Enviando petición POST para agregar nuestra cancion a la BBDD
+function submitCancion() {}
 
 // Fetching canciones from our API
 function callApi() {
@@ -34,7 +41,12 @@ function callingApiYoutube(id) {
 }
 
 function renderingHTML(video) {
-  const titulo = video.items[0].snippet.title;
+  let titulo = video.items[0].snippet.title;
+
+  if (titulo.length > 32) {
+    titulo = titulo.slice(0, 32) + "...";
+  }
+
   const imagenVideo = video.items[0].snippet.thumbnails.high.url;
 
   let div = document.createElement("div");

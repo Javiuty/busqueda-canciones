@@ -367,22 +367,8 @@ a:hover:before {
       -ms-grid-row-align: top;
       align-self: top;
   font-size: 1.8rem;
-}
-
-.canciones__cancion h4 {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2 / 3;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
-  grid-row: 1 / 2;
-  -ms-grid-column-align: center;
-      justify-self: center;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  font-size: 1.5rem;
   font-weight: normal;
+  padding: 0.2rem;
 }
 
 .canciones__cancion button {
