@@ -7,6 +7,16 @@
   src: url("../images/fonts/gt-walsheim-regular.ttf");
 }
 
+//MEDIA QUERIES (RESPONSIVE BREAKPOINTS)
+$bp-largest: 90.125em; //1442px
+$bp-large: 71.6em; //1074px
+$bp-medium: 51.7em; //776px
+$bp-small: 47.7em; //716px
+
+// @media only screen and (max-width: $bp-largest) {
+//   font-size: 50%;
+// }
+
 * {
   margin: 0;
   padding: 0;
