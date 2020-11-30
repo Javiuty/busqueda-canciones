@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./images/fav.png" type="image/x-icon" />
+    <title>Búsqueda De Canciones</title>
+    <link rel="stylesheet" href="./scss/main.css" />
+  </head>
+  <body>
+    <header class="header" id="buscador">
+      <header class="header__container">
+        <div class="header__left-container">
+          <h1 class="header__left-container__title">
+            búsqueda<span>de</span>canciones
+          </h1>
+        </div>
+        <div class="header__right-container">
+          <ul class="header__right-container__menu">
+            <li class="header__right-container__menu-item">
+              <a href="#buscador">Buscador</a>
+            </li>
+            <li class="header__right-container__menu-item">
+              <a href="#canciones">Canciones</a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <section class="header__body">
+        <div class="header__body-icono">
+          <svg class="icon">
+            <use xlink:href="./images/sprite.svg#icon-headphones"></use>
+          </svg>
+        </div>
+        <div class="header__body-subtitle">
+          <h2>
+            Bienvenidos/as, aquí podréis descargaros vuestras canciones de
+            youtube favoritas.
+          </h2>
+          <h3>
+            El proceso es muy sencillo, solamente tenéis que añadir el link del
+            video de youtube que te guste y darle al botón "añadir canción". Las
+            canciones se subirán lo antes posible. Por favor, tengan un poco de
+            paciencia con el proceso.
+          </h3>
+        </div>
+      </section>
+      <section class="header__form">
+        <form>
+          <div class="header__form-container">
+            <label>
+              <input
+                type="text"
+                placeholder="Inserta aquí el link de youtube"
+              />
+            </label>
+            <button class="btn">Añadir canción</button>
+          </div>
+        </form>
+      </section>
+    </header>
+    <section class="canciones" id="canciones">
+      <div class="canciones__container-title">
+        <h2><span>Tus</span>Canciones</h2>
+      </div>
+      <div class="canciones__main-container">
+        <div class="canciones__cancion">
+          <img src="./images/test.jpg" alt="Disco Green Day" />
+          <div class="canciones__cancion-title">
+            <h3>American Idiot</h3>
+            <h4>Green Day</h4>
+          </div>
+          <button class="btn">Descargar</button>
+        </div>
+      </div>
+    </section>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
