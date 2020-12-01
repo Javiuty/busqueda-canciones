@@ -1,16 +1,46 @@
 // Variables
-let container = document.querySelector(".canciones__main-container");
-let addBtn = document.querySelector("#addBtn");
+const container = document.querySelector(".canciones__main-container");
+const addBtn = document.querySelector("#addBtn");
+const enviarForm = document.querySelector("#enviar-form");
+let buscador = document.querySelector("#buscador");
 
 // Event Listeners
-addBtn.addEventListener("click", submitCancion);
+enviarForm.addEventListener("submit", enviandoData);
+buscador.addEventListener("keyup", handlingForm);
+
+let video = {
+  link: "",
+};
+
+function handlingForm(e) {
+  video.link = e.target.value;
+}
 
 // Enviando petición POST para agregar nuestra cancion a la BBDD
-function submitCancion() {}
+async function enviandoData(event) {
+  event.preventDefault();
+
+  await fetch("https://whispering-tundra-59051.herokuapp.com/agregar-cancion", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      link: video.link,
+    }),
+  });
+
+  enviarForm.reset();
+
+  limpiarHTML();
+
+  callApi();
+}
 
 // Fetching canciones from our API
 function callApi() {
-  fetch("http://localhost:5000/canciones")
+  fetch("https://whispering-tundra-59051.herokuapp.com/canciones")
     .then((response) => {
       return response.json();
     })
@@ -60,4 +90,10 @@ function renderingHTML(video) {
   `;
 
   container.appendChild(div);
+}
+
+function limpiarHTML() {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
 }
