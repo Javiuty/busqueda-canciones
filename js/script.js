@@ -4,14 +4,15 @@ const addBtn = document.querySelector("#addBtn");
 const enviarForm = document.querySelector("#enviar-form");
 let buscador = document.querySelector("#buscador");
 
-// Event Listeners
-enviarForm.addEventListener("submit", enviandoData);
-buscador.addEventListener("keyup", handlingForm);
-
 let video = {
   link: "",
 };
 
+// Event Listeners
+enviarForm.addEventListener("submit", enviandoData);
+buscador.addEventListener("keyup", handlingForm);
+
+// LLenando el input según lo rellena el usuario
 function handlingForm(e) {
   video.link = e.target.value;
 }
@@ -65,7 +66,7 @@ function handlingLinks(links) {
 //
 function callingApiYoutube(id) {
   fetch(
-    `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${GOOGLE_KEY.apiKey}`
+    `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${GOOGLE_KEY}`
   )
     .then((response) => response.json())
     .then((data) => renderingHTML(data));
