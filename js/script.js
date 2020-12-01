@@ -28,6 +28,7 @@ async function enviandoData(event) {
     },
     body: JSON.stringify({
       link: video.link,
+      fecha: Date.now(),
     }),
   });
 
