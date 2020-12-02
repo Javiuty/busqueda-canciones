@@ -55,26 +55,30 @@ function callApi() {
 callApi();
 
 // Sacando url, id del link
-function handlingLinks(links) {
-  links.forEach((link) => {
-    const url = link.link;
+function handlingLinks(canciones) {
+  canciones.forEach((cancion) => {
+    const url = cancion.link;
 
     const id = url.slice(32, 43);
 
-    callingApiYoutube(id);
+    const hora = parseFloat(cancion.fecha);
+
+    const horaFormateada = moment(hora).locale("es").calendar();
+
+    callingApiYoutube(id, horaFormateada);
   });
 }
 
 //
-function callingApiYoutube(id) {
+function callingApiYoutube(id, horaFormateada) {
   fetch(
     `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${GOOGLE_KEY}`
   )
     .then((response) => response.json())
-    .then((data) => renderingHTML(data));
+    .then((data) => renderingHTML(data, horaFormateada));
 }
 
-function renderingHTML(video) {
+function renderingHTML(video, horaFormateada) {
   let titulo = video.items[0].snippet.title;
 
   if (titulo.length > 32) {
@@ -82,6 +86,10 @@ function renderingHTML(video) {
   }
 
   const imagenVideo = video.items[0].snippet.thumbnails.high.url;
+
+  const hora = horaFormateada;
+
+  console.log(hora);
 
   let div = document.createElement("div");
   div.classList.add("canciones__cancion");
@@ -91,6 +99,7 @@ function renderingHTML(video) {
     <h3>${titulo}</h3>
   </div>
   <button class="btn">Descargar</button>
+  <p>${hora}</p>
   `;
 
   container.appendChild(div);
