@@ -338,8 +338,8 @@ a:hover:before {
 }
 
 .canciones__cancion img {
-  width: 13rem;
-  height: 13rem;
+  width: 16rem;
+  height: 16rem;
   border-radius: 5px;
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
@@ -363,9 +363,9 @@ a:hover:before {
   grid-row: 1 / 2;
   -ms-grid-column-align: center;
       justify-self: center;
-  -ms-flex-item-align: top;
-      -ms-grid-row-align: top;
-      align-self: top;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
   font-size: 1.8rem;
   font-weight: normal;
   padding: 0.2rem;

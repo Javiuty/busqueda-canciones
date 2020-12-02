@@ -82,7 +82,7 @@ function renderingHTML(video, horaFormateada) {
   let titulo = video.items[0].snippet.title;
 
   if (titulo.length > 32) {
-    titulo = titulo.slice(0, 32) + "...";
+    titulo = titulo.slice(0, 45) + "...";
   }
 
   const imagenVideo = video.items[0].snippet.thumbnails.high.url;
