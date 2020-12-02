@@ -17,27 +17,42 @@ function handlingForm(e) {
   video.link = e.target.value.trim();
 }
 
+callApi();
+
 // Enviando petición POST para agregar nuestra cancion a la BBDD
 async function enviandoData(event) {
   event.preventDefault();
 
-  await fetch("https://whispering-tundra-59051.herokuapp.com/agregar-cancion", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      link: video.link,
-      fecha: Date.now(),
-    }),
-  });
+  if (
+    video.link === "" ||
+    !video.link.includes("https://www.youtube.com") ||
+    !video.link.includes("v=")
+  ) {
+    errorValidacion();
+  } else {
+    await fetch(
+      "https://whispering-tundra-59051.herokuapp.com/agregar-cancion",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          link: video.link,
+          fecha: Date.now(),
+        }),
+      }
+    );
 
-  enviarForm.reset();
+    limpiarErrores();
 
-  limpiarHTML();
+    enviarForm.reset();
 
-  callApi();
+    limpiarHTML();
+
+    callApi();
+  }
 }
 
 // Fetching canciones from our API
@@ -52,7 +67,6 @@ function callApi() {
       return handlingLinks(dataJSON);
     });
 }
-callApi();
 
 // Sacando url, id del link
 function handlingLinks(canciones) {
@@ -89,8 +103,6 @@ function renderingHTML(video, horaFormateada) {
 
   const hora = horaFormateada;
 
-  console.log(hora);
-
   let div = document.createElement("div");
   div.classList.add("canciones__cancion");
   div.innerHTML = `
@@ -109,4 +121,16 @@ function limpiarHTML() {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
+}
+
+// Función que crea notificacion en caso de fallo de validacion
+function errorValidacion() {
+  let error = document.createElement("p");
+  error.textContent = "El link no es válido, pruebe otra vez";
+  error.classList.add("errorValidacion");
+  document.querySelector("#enviar-form").appendChild(error);
+}
+
+function limpiarErrores() {
+  document.querySelector("#enviar-form p").remove();
 }
