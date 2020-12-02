@@ -14,7 +14,7 @@ buscador.addEventListener("keyup", handlingForm);
 
 // LLenando el input según lo rellena el usuario
 function handlingForm(e) {
-  video.link = e.target.value;
+  video.link = e.target.value.trim();
 }
 
 // Enviando petición POST para agregar nuestra cancion a la BBDD
@@ -42,6 +42,8 @@ async function enviandoData(event) {
 
 // Fetching canciones from our API
 function callApi() {
+  limpiarHTML();
+
   fetch("https://whispering-tundra-59051.herokuapp.com/canciones")
     .then((response) => {
       return response.json();
