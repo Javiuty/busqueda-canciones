@@ -8,6 +8,8 @@ let video = {
   link: "",
 };
 
+callApi();
+
 // Event Listeners
 enviarForm.addEventListener("submit", enviandoData);
 buscador.addEventListener("keyup", handlingForm);
@@ -16,8 +18,6 @@ buscador.addEventListener("keyup", handlingForm);
 function handlingForm(e) {
   video.link = e.target.value.trim();
 }
-
-callApi();
 
 // Enviando petición POST para agregar nuestra cancion a la BBDD
 async function enviandoData(event) {
@@ -96,7 +96,7 @@ function renderingHTML(video, horaFormateada) {
   let titulo = video.items[0].snippet.title;
 
   if (titulo.length > 32) {
-    titulo = titulo.slice(0, 45) + "...";
+    titulo = titulo.slice(0, 30) + "...";
   }
 
   const imagenVideo = video.items[0].snippet.thumbnails.high.url;
