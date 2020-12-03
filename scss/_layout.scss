@@ -149,9 +149,11 @@
 .canciones {
   min-height: 30vh;
   color: #000;
-  padding-top: 6rem;
+  padding-top: 5rem;
 
   &__container-title {
+    margin-bottom: 5rem;
+
     span {
       color: var(--color-primary);
       margin-right: 1rem;

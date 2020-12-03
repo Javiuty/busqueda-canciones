@@ -273,7 +273,11 @@ a:hover:before {
 .canciones {
   min-height: 30vh;
   color: #000;
-  padding-top: 6rem;
+  padding-top: 5rem;
+}
+
+.canciones__container-title {
+  margin-bottom: 5rem;
 }
 
 .canciones__container-title span {
