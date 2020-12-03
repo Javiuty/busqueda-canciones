@@ -3,6 +3,7 @@ const container = document.querySelector(".canciones__main-container");
 const addBtn = document.querySelector("#addBtn");
 const enviarForm = document.querySelector("#enviar-form");
 let buscador = document.querySelector("#buscador");
+let errores = [];
 
 let video = {
   link: "",
@@ -125,10 +126,17 @@ function limpiarHTML() {
 
 // Función que crea notificacion en caso de fallo de validacion
 function errorValidacion() {
-  let error = document.createElement("p");
-  error.textContent = "El link no es válido, pruebe otra vez";
-  error.classList.add("errorValidacion");
-  document.querySelector("#enviar-form").appendChild(error);
+  if (errores.length) {
+    null;
+  } else {
+    let error = document.createElement("p");
+    errores.push(error);
+    error.textContent = "El link no es válido, pruebe otra vez";
+    error.classList.add("errorValidacion");
+    document.querySelector("#enviar-form").appendChild(error);
+  }
+
+  enviarForm.reset();
 }
 
 function limpiarErrores() {
