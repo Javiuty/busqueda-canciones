@@ -16,7 +16,7 @@ callApi();
 
 // Event Listeners
 enviarForm.addEventListener("submit", enviandoData);
-buscador.addEventListener("keyup", handlingForm);
+buscador.addEventListener("change", handlingForm);
 
 // LLenando el input según lo rellena el usuario
 function handlingForm(e) {
