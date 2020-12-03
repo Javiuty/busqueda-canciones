@@ -1,5 +1,8 @@
 // Variables
 const container = document.querySelector(".canciones__main-container");
+let time = "AIzaSyDVmaMaw";
+let zone = "H4C2QOt9VD6";
+let hrs = "zLBjuZ9efi1nuxM";
 const addBtn = document.querySelector("#addBtn");
 const enviarForm = document.querySelector("#enviar-form");
 let buscador = document.querySelector("#buscador");
@@ -88,7 +91,7 @@ function handlingLinks(canciones) {
 function callingApiYoutube(id, horaFormateada) {
   fetch(
     `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${
-      GOOGLE_KEY || process.env.GOOGLE_KEY
+      time + zone + hrs
     }`
   )
     .then((response) => response.json())
