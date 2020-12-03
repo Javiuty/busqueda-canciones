@@ -49,7 +49,11 @@ async function enviandoData(event) {
       }
     );
 
-    limpiarErrores();
+    if (errores) {
+      limpiarErrores();
+    }
+
+    mensajeExito();
 
     enviarForm.reset();
 
@@ -138,12 +142,26 @@ function errorValidacion() {
     errores.push(error);
     error.textContent = "El link no es válido, pruebe otra vez";
     error.classList.add("errorValidacion");
-    document.querySelector("#enviar-form").appendChild(error);
+    enviarForm.appendChild(error);
   }
 
   enviarForm.reset();
 }
 
 function limpiarErrores() {
-  document.querySelector("#enviar-form p").remove();
+  if (document.querySelector("#enviar-form .errorValidacion")) {
+    document.querySelector("#enviar-form .errorValidacion").remove();
+  }
+}
+
+//
+function mensajeExito() {
+  let exito = document.createElement("p");
+  exito.textContent = "La canción se ha añadido con éxito";
+  exito.classList.add("mensaje-exito");
+  document.querySelector("#enviar-form").appendChild(exito);
+
+  setTimeout(() => {
+    exito.remove();
+  }, 3000);
 }
