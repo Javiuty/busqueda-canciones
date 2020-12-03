@@ -87,7 +87,9 @@ function handlingLinks(canciones) {
 //
 function callingApiYoutube(id, horaFormateada) {
   fetch(
-    `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${GOOGLE_KEY}`
+    `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${
+      GOOGLE_KEY || process.env.GOOGLE_KEY
+    }`
   )
     .then((response) => response.json())
     .then((data) => renderingHTML(data, horaFormateada));
