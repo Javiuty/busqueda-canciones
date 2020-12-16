@@ -71,6 +71,7 @@ async function enviandoData(event) {
 function callApi() {
   limpiarHTML();
 
+  // Spinner starts
   const divSpinner = document.createElement("div");
   divSpinner.classList.add("centered");
   divSpinner.innerHTML = `
@@ -100,6 +101,7 @@ function callApi() {
         return handlingLinks(dataJSON);
       })
       .finally(() => {
+        // Spinner ends
         divSpinner.remove();
       });
   }, 1000);
@@ -155,7 +157,7 @@ function renderingHTML(video, horaFormateada) {
 
   container.appendChild(div);
 }
-
+// Función para eliminar el HTML previo
 function limpiarHTML() {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
@@ -173,17 +175,18 @@ function errorValidacion() {
     error.classList.add("errorValidacion");
     enviarForm.appendChild(error);
   }
-
+  // Resetea el form
   enviarForm.reset();
 }
 
+// Función para que no se junten todos los mensajes de error
 function limpiarErrores() {
   if (document.querySelector("#enviar-form .errorValidacion")) {
     document.querySelector("#enviar-form .errorValidacion").remove();
   }
 }
 
-//
+// Si hemos agregado un link correcto
 function mensajeExito() {
   let exito = document.createElement("p");
   exito.textContent = "Agregando la canción...";
