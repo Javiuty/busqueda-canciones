@@ -71,13 +71,38 @@ async function enviandoData(event) {
 function callApi() {
   limpiarHTML();
 
-  fetch("https://whispering-tundra-59051.herokuapp.com/canciones")
-    .then((response) => {
-      return response.json();
-    })
-    .then((dataJSON) => {
-      return handlingLinks(dataJSON);
-    });
+  const divSpinner = document.createElement("div");
+  divSpinner.classList.add("centered");
+  divSpinner.innerHTML = `
+  <div class="sk-fading-circle">
+  <div class="sk-circle1 sk-circle"></div>
+  <div class="sk-circle2 sk-circle"></div>
+  <div class="sk-circle3 sk-circle"></div>
+  <div class="sk-circle4 sk-circle"></div>
+  <div class="sk-circle5 sk-circle"></div>
+  <div class="sk-circle6 sk-circle"></div>
+  <div class="sk-circle7 sk-circle"></div>
+  <div class="sk-circle8 sk-circle"></div>
+  <div class="sk-circle9 sk-circle"></div>
+  <div class="sk-circle10 sk-circle"></div>
+  <div class="sk-circle11 sk-circle"></div>
+  <div class="sk-circle12 sk-circle"></div>
+</div>
+  `;
+  container.appendChild(divSpinner);
+
+  setTimeout(() => {
+    fetch("https://whispering-tundra-59051.herokuapp.com/canciones")
+      .then((response) => {
+        return response.json();
+      })
+      .then((dataJSON) => {
+        return handlingLinks(dataJSON);
+      })
+      .finally(() => {
+        divSpinner.remove();
+      });
+  }, 1000);
 }
 
 // Sacando url, id del link
@@ -161,11 +186,11 @@ function limpiarErrores() {
 //
 function mensajeExito() {
   let exito = document.createElement("p");
-  exito.textContent = "La canción se ha añadido con éxito";
+  exito.textContent = "Agregando la canción...";
   exito.classList.add("mensaje-exito");
   document.querySelector("#enviar-form").appendChild(exito);
 
   setTimeout(() => {
     exito.remove();
-  }, 3000);
+  }, 1300);
 }
