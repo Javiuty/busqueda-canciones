@@ -33,6 +33,7 @@ async function enviandoData(event) {
     !video.link.includes("v=")
   ) {
     errorValidacion();
+    return;
   } else {
     await fetch(
       "https://whispering-tundra-59051.herokuapp.com/agregar-cancion",
@@ -48,6 +49,9 @@ async function enviandoData(event) {
         }),
       }
     );
+
+    // Reset Obj
+    video.link = "";
 
     if (errores) {
       limpiarErrores();
