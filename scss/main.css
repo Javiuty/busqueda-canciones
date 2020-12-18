@@ -584,8 +584,7 @@ a:hover:before {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   font-style: italic;
   color: gray;
 }
