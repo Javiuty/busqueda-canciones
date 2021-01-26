@@ -1,0 +1,278 @@
+// HEADER
+.header {
+  min-height: 80vh;
+  background: linear-gradient(to top, #373b44, #4286f4);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+  }
+
+  &__left-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 100%;
+      padding-top: 2rem;
+    }
+
+    &__title {
+      text-transform: uppercase;
+      margin-left: 5rem;
+      font-size: 2.7rem;
+
+      span {
+        color: black;
+      }
+    }
+  }
+
+  &__right-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      display: none;
+    }
+
+    &__menu {
+      display: flex;
+      list-style: none;
+
+      &-item {
+        font-size: 2.2rem;
+        margin-right: 5rem;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        &:active {
+          transform: translateY(0.2rem);
+        }
+      }
+    }
+  }
+
+  &__body {
+    min-height: 40vh;
+    text-align: center;
+
+    svg {
+      fill: #000;
+      width: 10rem;
+      height: 10rem;
+      margin-top: 3.5rem;
+    }
+
+    &-subtitle {
+      margin: 0 auto;
+      width: 53%;
+
+      h2 {
+        font-size: 2.7rem;
+        margin: 4rem 0;
+        font-weight: normal;
+      }
+      h3 {
+        font-size: 2.2rem;
+        font-weight: normal;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem;
+
+    &-container {
+      display: flex;
+
+      @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      label {
+        margin-right: 3%;
+      }
+
+      input {
+        border: none;
+        width: 48rem;
+        height: 4rem;
+        padding: 0.5rem 1rem;
+        font-size: 2rem;
+        color: #3b3b3b;
+        border-radius: 3px;
+        box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
+      }
+
+      button {
+        border: none;
+        font-size: 1.7rem;
+        width: 19rem;
+        font-weight: bold;
+        padding: 0rem 2rem;
+        background-color: var(--color-primary);
+        color: #fff;
+        border-radius: 3px;
+        cursor: pointer;
+        box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
+
+        &:hover {
+          opacity: 0.9;
+        }
+
+        &:active {
+          transform: translateY(0.2rem);
+        }
+
+        @media only screen and (max-width: $bp-small) {
+          margin-top: 2rem;
+          padding: 1rem 2rem;
+        }
+      }
+    }
+  }
+}
+
+// SECCION DE CANCIONES
+.canciones {
+  min-height: 30vh;
+  color: #000;
+  padding-top: 5rem;
+
+  &__container-title {
+    margin-bottom: 5rem;
+
+    span {
+      color: var(--color-primary);
+      margin-right: 1rem;
+    }
+    h2 {
+      text-align: center;
+      font-size: 3.3rem;
+      letter-spacing: 0.5rem;
+    }
+  }
+
+  &__main-container {
+    min-height: 50vh;
+    margin: 3rem auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(4, 35rem);
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    justify-content: center;
+    grid-auto-rows: 18rem;
+
+    @media only screen and (max-width: $bp-largest) {
+      grid-template-columns: repeat(3, 35rem);
+    }
+
+    @media only screen and (max-width: $bp-large) {
+      grid-template-columns: repeat(2, 35rem);
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: repeat(1, 35rem);
+    }
+  }
+
+  &__cancion {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr 3rem;
+    border: 3px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
+
+    img {
+      width: 16rem;
+      height: 16rem;
+      border-radius: 5px;
+      grid-column: 1 / 2;
+      grid-row: 1 / 4;
+      justify-self: center;
+      align-self: center;
+    }
+
+    h3 {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      justify-self: center;
+      align-self: end;
+      font-size: 1.6rem;
+      font-weight: normal;
+      padding: 0.2rem;
+    }
+
+    button {
+      border: none;
+      font-size: 1.7rem;
+      width: 80%;
+      height: 70%;
+      font-weight: bold;
+      background-color: red;
+      color: #fff;
+      border-radius: 3px;
+      cursor: not-allowed;
+      box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      justify-self: center;
+      align-self: center;
+      opacity: 0.5;
+    }
+
+    &-title {
+      justify-self: center;
+      align-self: center;
+      text-align: center;
+    }
+
+    p {
+      justify-self: center;
+      align-self: center;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: gray;
+    }
+  }
+}
+
+.enabled {
+  opacity: 1 !important;
+  background-color: green !important;
+  cursor: pointer !important;
+}
+
+.errorValidacion {
+  text-align: center;
+  background-color: red;
+  color: #fff;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+.mensaje-exito {
+  text-align: center;
+  background-color: green;
+  color: #fff;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
