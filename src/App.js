@@ -4,6 +4,7 @@ import { ReactComponent as IconHeadphones } from "./images/SVG/headphones.svg";
 import Canciones from "./components/Canciones";
 
 const App = () => {
+  // eslint-disable-next-line no-unused-vars
   const [url, setUrl] = useState("");
 
   return (

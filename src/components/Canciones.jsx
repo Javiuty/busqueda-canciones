@@ -6,6 +6,7 @@ import Spinner from "./Spinner";
 
 const Canciones = () => {
   const [songs, setSongs] = useState([]);
+  const [dataSongs, setDataSongs] = useState([]);
 
   useEffect(() => {
     const callingApi = async () => {
@@ -15,22 +16,28 @@ const Canciones = () => {
 
       setSongs(resultado.data);
 
-      handlingLinks(songs);
+      handlingLinks();
     };
     callingApi();
-  }, [songs]);
+  }, []);
 
-  const handlingLinks = (canciones) => {
-    canciones.forEach((cancion) => {
-      const url = cancion.link;
-
-      const id = url.slice(32, 43);
-
-      const hora = parseFloat(cancion.fecha);
-
-      const horaFormateada = moment(hora).locale("es").calendar();
-
-      // callingApiYoutube(id, horaFormateada);
+  const handlingLinks = () => {
+    songs.forEach((song) => {
+      setDataSongs([
+        ...dataSongs,
+        {
+          url: song.link,
+          id: this.url.slice(32, 43),
+          hora: parseFloat(song.fecha),
+          horaFormateada: moment(this.hora).locale("es").calendar(),
+        },
+      ]);
+      // return {
+      //   url: song.link,
+      //   id: this.url.slice(32, 43),
+      //   hora: parseFloat(song.fecha),
+      //   horaFormateada: moment(this.hora).locale("es").calendar(),
+      // };
     });
   };
 
@@ -41,7 +48,13 @@ const Canciones = () => {
   // },[])
 
   return (
-    <>{!songs ? <Spinner /> : songs.map((song) => <Cancion song={song} />)}</>
+    <>
+      {!songs ? (
+        <Spinner />
+      ) : (
+        songs.map((song) => <Cancion key={song.id} song={song} />)
+      )}
+    </>
   );
 };
 
