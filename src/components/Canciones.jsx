@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import axios from "axios";
+import Cancion from "./Cancion";
+import Spinner from "./Spinner";
 
 const Canciones = () => {
   const [songs, setSongs] = useState([]);
@@ -28,14 +30,18 @@ const Canciones = () => {
 
       const horaFormateada = moment(hora).locale("es").calendar();
 
-      /* callingApiYoutube(id, horaFormateada); */
+      // callingApiYoutube(id, horaFormateada);
     });
   };
 
+  // useEffect(() => {
+  //   const callingApiYoutube = (id, horaFormateada) => {
+
+  //   };
+  // },[])
+
   return (
-    <>
-      <h2>Canciones</h2>
-    </>
+    <>{!songs ? <Spinner /> : songs.map((song) => <Cancion song={song} />)}</>
   );
 };
 
