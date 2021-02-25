@@ -16,7 +16,7 @@ const Canciones = () => {
       handlingLinks(songs);
     };
     callingApi();
-  }, []);
+  }, [songs]);
 
   const handlingLinks = (canciones) => {
     canciones.forEach((cancion) => {

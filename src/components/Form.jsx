@@ -46,23 +46,25 @@ const Form = ({ setUrl }) => {
   };
 
   return (
-    <form id="enviar-form" onSubmit={handlingForm}>
-      {error ? <Error mensaje="No es un enlace válido" tipo="error" /> : null}
-      {exito ? <Error mensaje="Link enviado con éxito" /> : null}
-      <div className="header__form-container">
-        <label>
-          <input
-            id="buscador"
-            type="text"
-            placeholder="Inserta aquí el link de youtube"
-            onChange={(e) => setInputSong(e.target.value.trim())}
-          />
-        </label>
-        <button type="submit" id="addBtn" className="btn">
-          Añadir canción
-        </button>
-      </div>
-    </form>
+    <>
+      <form id="enviar-form" onSubmit={handlingForm}>
+        <div className="header__form-container">
+          <label>
+            <input
+              id="buscador"
+              type="text"
+              placeholder="Inserta aquí el link de youtube"
+              onChange={(e) => setInputSong(e.target.value.trim())}
+            />
+          </label>
+          <button type="submit" id="addBtn" className="btn">
+            Añadir canción
+          </button>
+        </div>
+        {error ? <Error mensaje="No es un enlace válido" tipo="error" /> : null}
+        {exito ? <Error mensaje="Link enviado con éxito" /> : null}
+      </form>
+    </>
   );
 };
 
