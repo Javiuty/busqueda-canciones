@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Form from "./components/Form";
 import { ReactComponent as IconHeadphones } from "./images/SVG/headphones.svg";
 import Canciones from "./components/Canciones";
 
 const App = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [url, setUrl] = useState("");
-
   return (
     <>
       <header className="header" id="buscador">
@@ -45,7 +42,7 @@ const App = () => {
           </div>
         </section>
         <section className="header__form">
-          <Form setUrl={setUrl} />
+          <Form />
         </section>
       </header>
       <section className="canciones" id="canciones">

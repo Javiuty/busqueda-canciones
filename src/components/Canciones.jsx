@@ -1,51 +1,22 @@
 import React, { useEffect, useState } from "react";
-import moment from "moment";
-import axios from "axios";
+import Axios from "axios";
 import Cancion from "./Cancion";
 import Spinner from "./Spinner";
 
 const Canciones = () => {
   const [songs, setSongs] = useState([]);
-  const [dataSongs, setDataSongs] = useState([]);
 
   useEffect(() => {
-    const callingApi = async () => {
-      const url = "https://whispering-tundra-59051.herokuapp.com/canciones";
+    const gettingSongs = async () => {
+      const url = "http://localhost:5000/canciones";
 
-      const resultado = await axios.get(url);
+      const resultado = await Axios.get(url);
 
       setSongs(resultado.data);
-
-      handlingLinks();
     };
-    callingApi();
+
+    gettingSongs();
   }, []);
-
-  const handlingLinks = () => {
-    songs.forEach((song) => {
-      setDataSongs([
-        ...dataSongs,
-        {
-          url: song.link,
-          id: this.url.slice(32, 43),
-          hora: parseFloat(song.fecha),
-          horaFormateada: moment(this.hora).locale("es").calendar(),
-        },
-      ]);
-      // return {
-      //   url: song.link,
-      //   id: this.url.slice(32, 43),
-      //   hora: parseFloat(song.fecha),
-      //   horaFormateada: moment(this.hora).locale("es").calendar(),
-      // };
-    });
-  };
-
-  // useEffect(() => {
-  //   const callingApiYoutube = (id, horaFormateada) => {
-
-  //   };
-  // },[])
 
   return (
     <>
