@@ -3,7 +3,7 @@ import Error from "./Error";
 import Axios from "axios";
 import moment from "moment";
 
-const Form = ({ setUrl }) => {
+const Form = ({ setUrlInput }) => {
   const [inputSong, setInputSong] = useState("");
   const [error, setError] = useState(false);
   const [exito, setExito] = useState(false);
@@ -34,8 +34,7 @@ const Form = ({ setUrl }) => {
     } = resultado;
 
     // Petición POST de objeto con: url, fecha formateada, titulo e imagen
-    const urlPost =
-      "https://whispering-tundra-59051.herokuapp.com/agregar-cancion";
+    const urlPost = "http://localhost:5000/agregar-cancion";
 
     const InfoObj = {
       idYoutube: idYoutube,
@@ -59,6 +58,8 @@ const Form = ({ setUrl }) => {
     setTimeout(() => {
       setExito(false);
     }, 3000);
+
+    setUrlInput(inputSong);
 
     /* Reseteamos form y estado */
     setInputSong("");

@@ -3,7 +3,7 @@ import Axios from "axios";
 import Cancion from "./Cancion";
 import Spinner from "./Spinner";
 
-const Canciones = () => {
+const Canciones = ({ urlInput }) => {
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Canciones = () => {
     };
 
     gettingSongs();
-  }, []);
+  }, [urlInput]);
 
   return (
     <>

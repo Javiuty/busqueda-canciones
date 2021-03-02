@@ -12,6 +12,8 @@ const Cancion = ({ song }) => {
     newTitle = title;
   }
 
+  let clase = !enlace ? "btn" : "btn enabled";
+
   return (
     <div className="canciones__cancion">
       <img src={image} alt={newTitle} />
@@ -19,7 +21,7 @@ const Cancion = ({ song }) => {
         <h3>{newTitle}</h3>
       </div>
       <a href={enlace}>
-        <button className="btn">Descargar</button>
+        <button className={clase}>Descargar</button>
       </a>
       <p>{fecha}</p>
     </div>

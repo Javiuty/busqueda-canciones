@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "./components/Form";
 import { ReactComponent as IconHeadphones } from "./images/SVG/headphones.svg";
 import Canciones from "./components/Canciones";
 
 const App = () => {
+  const [urlInput, setUrlInput] = useState("");
+
   return (
     <>
       <header className="header" id="buscador">
@@ -42,7 +44,7 @@ const App = () => {
           </div>
         </section>
         <section className="header__form">
-          <Form />
+          <Form setUrlInput={setUrlInput} />
         </section>
       </header>
       <section className="canciones" id="canciones">
@@ -52,7 +54,7 @@ const App = () => {
           </h2>
         </div>
         <div className="canciones__main-container">
-          <Canciones />
+          <Canciones urlInput={urlInput} />
         </div>
       </section>
     </>
