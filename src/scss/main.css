@@ -34,6 +34,11 @@ body {
 }
 
 a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.link {
   display: inline-block;
   position: relative;
   color: #fff;
@@ -41,8 +46,8 @@ a {
   padding: 0 4px;
 }
 
-a:before,
-a:after {
+.link:before,
+.link:after {
   content: "";
   width: 100%;
   height: 100%;
@@ -57,22 +62,22 @@ a:after {
   transition: 0.8s;
 }
 
-a:before {
+.link:before {
   border-bottom: 1px solid #fff;
   border-left: 1px solid #fff;
   -webkit-transform-origin: 0 100%;
           transform-origin: 0 100%;
 }
 
-a:after {
+.link:after {
   border-top: 1px solid #fff;
   border-right: 1px solid #fff;
   -webkit-transform-origin: 100% 0%;
           transform-origin: 100% 0%;
 }
 
-a:hover:after,
-a:hover:before {
+.link:hover:after,
+.link:hover:before {
   -webkit-transform: scale(1);
           transform: scale(1);
 }
@@ -479,17 +484,19 @@ a:hover:before {
 .canciones__main-container {
   min-height: 50vh;
   margin: 3rem auto;
-  width: 75%;
+  width: 68%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (35rem)[4];
-      grid-template-columns: repeat(4, 35rem);
+  -ms-grid-columns: (15rem)[8];
+      grid-template-columns: repeat(8, 15rem);
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   grid-auto-rows: 18rem;
+  -ms-grid-rows: 24rem;
+      grid-template-rows: 24rem;
 }
 
 @media only screen and (max-width: 90.125em) {
@@ -514,57 +521,45 @@ a:hover:before {
 }
 
 .canciones__cancion {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  -ms-grid-rows: 1fr 1fr 3rem;
-      grid-template-rows: 1fr 1fr 3rem;
-  border: 3px solid black;
+  border: 1px solid black;
   border-radius: 5px;
   -webkit-box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
           box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  background-color: grey;
 }
 
 .canciones__cancion img {
-  width: 16rem;
-  height: 16rem;
-  border-radius: 5px;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1 / 2;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 3;
-  grid-row: 1 / 4;
-  -ms-grid-column-align: center;
-      justify-self: center;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  width: 100%;
 }
 
 .canciones__cancion h3 {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2 / 3;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
-  grid-row: 1 / 2;
-  -ms-grid-column-align: center;
-      justify-self: center;
-  -ms-flex-item-align: end;
-      -ms-grid-row-align: end;
-      align-self: end;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: normal;
-  padding: 0.2rem;
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  cursor: default;
+}
+
+.canciones__cancion figcaption {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 2fr 1fr;
+      grid-template-rows: 2fr 1fr;
+}
+
+.canciones__cancion a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: not-allowed;
 }
 
 .canciones__cancion button {
+  display: block;
   border: none;
-  font-size: 1.7rem;
-  width: 80%;
-  height: 70%;
+  font-size: 1.3rem;
+  width: 65%;
   font-weight: bold;
   background-color: red;
   color: #fff;
@@ -572,18 +567,10 @@ a:hover:before {
   cursor: not-allowed;
   -webkit-box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
           box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2 / 3;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 1;
-  grid-row: 2 / 3;
-  -ms-grid-column-align: center;
-      justify-self: center;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
   opacity: 0.5;
+  padding: 0.5rem 1rem;
+  margin: 0 auto;
+  margin-top: 1.2rem;
 }
 
 .canciones__cancion-title {

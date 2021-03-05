@@ -1,30 +1,24 @@
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import React, { useEffect } from "react";
 import Cancion from "./Cancion";
-import Spinner from "./Spinner";
 
-const Canciones = ({ urlInput }) => {
-  const [songs, setSongs] = useState([]);
-
+const Canciones = ({ urlInput, setSongs, songs }) => {
   useEffect(() => {
-    const gettingSongs = async () => {
-      const url = "http://localhost:5000/canciones";
+    const gettingSongs = () => {
+      const url = "https://whispering-tundra-59051.herokuapp.com/canciones";
 
-      const resultado = await Axios.get(url);
-
-      setSongs(resultado.data);
+      fetch(url)
+        .then((response) => response.json())
+        .then((resultado) => setSongs(resultado));
     };
 
     gettingSongs();
-  }, [urlInput]);
+  }, [urlInput, setSongs]);
 
   return (
     <>
-      {!songs ? (
-        <Spinner />
-      ) : (
-        songs.map((song) => <Cancion key={song.id} song={song} />)
-      )}
+      {songs.map((song) => (
+        <Cancion key={song.id} song={song} />
+      ))}
     </>
   );
 };

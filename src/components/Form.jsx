@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Error from "./Error";
-import Axios from "axios";
-import moment from "moment";
 
 const Form = ({ setUrlInput }) => {
   const [inputSong, setInputSong] = useState("");
@@ -10,6 +8,8 @@ const Form = ({ setUrlInput }) => {
 
   const handlingForm = async (e) => {
     e.preventDefault();
+
+    let respuesta;
 
     if (
       inputSong === "" ||
@@ -27,31 +27,39 @@ const Form = ({ setUrlInput }) => {
     // LLamar api youtube con id y apikey
     const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${idYoutube}&key=${process.env.REACT_APP_API_KEY}`;
 
-    const resultado = await Axios.get(url);
+    await fetch(url)
+      .then((response) => response.json())
+      .then((resultado) => (respuesta = resultado));
 
-    const {
-      data: { items },
-    } = resultado;
+    const { items } = respuesta;
 
     // Petición POST de objeto con: url, fecha formateada, titulo e imagen
-    const urlPost = "http://localhost:5000/agregar-cancion";
+    const urlPost =
+      "https://whispering-tundra-59051.herokuapp.com/agregar-cancion";
 
     const InfoObj = {
       idYoutube: idYoutube,
       url: inputSong,
-      fecha: moment(parseFloat(Date.now())).locale("es").calendar(),
+      fecha: parseFloat(Date.now()),
       title: items[0].snippet.title,
       image: items[0].snippet.thumbnails.high.url,
       enlace: "",
     };
 
-    // eslint-disable-next-line no-unused-vars
-    const resp = await Axios.post(urlPost, InfoObj, {
+    fetch(urlPost, {
+      method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+      body: JSON.stringify(InfoObj),
     });
+    // const resp = await Axios.post(urlPost, InfoObj, {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     accept: "application/json",
+    //   },
+    // });
 
     setExito(true);
 
@@ -59,6 +67,7 @@ const Form = ({ setUrlInput }) => {
       setExito(false);
     }, 3000);
 
+    // Cambia el estado para renderizar la nueva canción añadida
     setUrlInput(inputSong);
 
     /* Reseteamos form y estado */

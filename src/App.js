@@ -5,6 +5,7 @@ import Canciones from "./components/Canciones";
 
 const App = () => {
   const [urlInput, setUrlInput] = useState("");
+  const [songs, setSongs] = useState([]);
 
   return (
     <>
@@ -18,10 +19,14 @@ const App = () => {
           <div className="header__right-container">
             <ul className="header__right-container__menu">
               <li className="header__right-container__menu-item">
-                <a href="#buscador">Buscador</a>
+                <a href="#buscador" className="link">
+                  Buscador
+                </a>
               </li>
               <li className="header__right-container__menu-item">
-                <a href="#canciones">Canciones</a>
+                <a href="#canciones" className="link">
+                  Canciones
+                </a>
               </li>
             </ul>
           </div>
@@ -54,7 +59,7 @@ const App = () => {
           </h2>
         </div>
         <div className="canciones__main-container">
-          <Canciones urlInput={urlInput} />
+          <Canciones urlInput={urlInput} setSongs={setSongs} songs={songs} />
         </div>
       </section>
     </>
