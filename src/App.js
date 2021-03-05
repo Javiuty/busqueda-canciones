@@ -49,7 +49,7 @@ const App = () => {
           </div>
         </section>
         <section className="header__form">
-          <Form setUrlInput={setUrlInput} />
+          <Form setUrlInput={setUrlInput} setSongs={setSongs} />
         </section>
       </header>
       <section className="canciones" id="canciones">

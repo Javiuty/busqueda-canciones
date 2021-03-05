@@ -93,9 +93,12 @@
 
   &__form {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 6rem;
+    width: 36%;
+    margin: 0 auto;
 
     &-container {
       display: flex;
@@ -130,15 +133,15 @@
 
       button {
         border: none;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         width: 19rem;
         font-weight: bold;
-        padding: 0rem 2rem;
         background-color: var(--color-primary);
         color: #fff;
         border-radius: 3px;
         cursor: pointer;
         box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
+        padding: 0 3rem;
 
         &:hover {
           opacity: 0.9;
@@ -292,4 +295,8 @@
   padding: 1rem 2rem;
   margin-top: 2rem;
   font-size: 1.5rem;
+}
+
+.w-full {
+  width: 100%;
 }

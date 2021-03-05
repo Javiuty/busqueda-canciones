@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Error from "./Error";
 
-const Form = ({ setUrlInput }) => {
+const Form = ({ setUrlInput, setSongs }) => {
   const [inputSong, setInputSong] = useState("");
   const [error, setError] = useState(false);
   const [exito, setExito] = useState(false);
@@ -34,8 +34,7 @@ const Form = ({ setUrlInput }) => {
     const { items } = respuesta;
 
     // Petición POST de objeto con: url, fecha formateada, titulo e imagen
-    const urlPost =
-      "https://whispering-tundra-59051.herokuapp.com/agregar-cancion";
+    const urlPost = "https://busca-canciones.herokuapp.com/agregar-cancion";
 
     const InfoObj = {
       idYoutube: idYoutube,
@@ -54,12 +53,6 @@ const Form = ({ setUrlInput }) => {
       },
       body: JSON.stringify(InfoObj),
     });
-    // const resp = await Axios.post(urlPost, InfoObj, {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     accept: "application/json",
-    //   },
-    // });
 
     setExito(true);
 
@@ -75,9 +68,21 @@ const Form = ({ setUrlInput }) => {
     document.getElementById("enviar-form").reset();
   };
 
+  useEffect(() => {
+    const gettingSongs = () => {
+      const url = "https://busca-canciones.herokuapp.com/canciones";
+
+      fetch(url)
+        .then((response) => response.json())
+        .then((resultado) => setSongs(resultado));
+    };
+
+    gettingSongs();
+  }, [setSongs, error, exito]);
+
   return (
     <>
-      <form id="enviar-form" onSubmit={handlingForm}>
+      <form className="w-full" id="enviar-form" onSubmit={handlingForm}>
         <div className="header__form-container">
           <label>
             <input
@@ -91,9 +96,9 @@ const Form = ({ setUrlInput }) => {
             Añadir canción
           </button>
         </div>
-        {error ? <Error mensaje="No es un enlace válido" tipo="error" /> : null}
-        {exito ? <Error mensaje="Link enviado con éxito" /> : null}
       </form>
+      {error ? <Error mensaje="No es un enlace válido" tipo="error" /> : null}
+      {exito ? <Error mensaje="Link enviado con éxito" /> : null}
     </>
   );
 };
