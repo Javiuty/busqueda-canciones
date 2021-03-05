@@ -74,6 +74,11 @@
       margin: 0 auto;
       width: 53%;
 
+      @media only screen and (max-width: $bp-smartphone) {
+        font-size: 50%;
+        width: 90%;
+      }
+
       h2 {
         font-size: 2.7rem;
         margin: 4rem 0;
@@ -94,6 +99,7 @@
 
     &-container {
       display: flex;
+      width: 100%;
 
       @media only screen and (max-width: $bp-small) {
         flex-direction: column;
@@ -103,6 +109,7 @@
 
       label {
         margin-right: 3%;
+        width: 100%;
       }
 
       input {
@@ -114,6 +121,11 @@
         color: #3b3b3b;
         border-radius: 3px;
         box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
+
+        @media only screen and (max-width: $bp-smartphone) {
+          width: 90%;
+          margin: 0 auto;
+        }
       }
 
       button {
@@ -168,14 +180,10 @@
   &__main-container {
     min-height: 50vh;
     margin: 3rem auto;
-    width: 68%;
-    display: grid;
-    grid-template-columns: repeat(8, 15rem);
-    grid-column-gap: 1rem;
-    grid-row-gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 76%;
     justify-content: center;
-    grid-auto-rows: 18rem;
-    grid-template-rows: 24rem;
 
     @media only screen and (max-width: $bp-largest) {
       grid-template-columns: repeat(3, 35rem);
@@ -196,16 +204,22 @@
     box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.75);
     overflow: hidden;
     background-color: grey;
+    height: 24rem;
+    width: 15rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
 
     img {
       width: 100%;
     }
 
     h3 {
+      display: flex;
+      justify-content: center;
       font-size: 1.2rem;
       font-weight: normal;
       color: #fff;
-      padding: 0.3rem 0.5rem;
+      padding: 0.3rem 1.2rem;
       cursor: default;
     }
 
