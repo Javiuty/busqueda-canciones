@@ -18,6 +18,7 @@ const Cancion = ({ song }) => {
     <figure className="canciones__cancion">
       <img src={image} alt={title} />
       <figcaption>
+        <p>x</p>
         {/* Icono cruz para borrar película */}
         <h3>{newTitle}</h3>
         <button className={clase}>

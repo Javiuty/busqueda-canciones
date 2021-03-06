@@ -212,6 +212,17 @@
     margin-right: 1rem;
     margin-bottom: 1rem;
 
+    position: relative;
+
+    p {
+      position: absolute;
+      top: 0;
+      left: 20px;
+
+      font-size: 3rem;
+      color: red;
+    }
+
     img {
       width: 100%;
     }

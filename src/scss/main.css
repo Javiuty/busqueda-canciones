@@ -549,6 +549,15 @@ a {
   width: 15rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  position: relative;
+}
+
+.canciones__cancion p {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  font-size: 3rem;
+  color: red;
 }
 
 .canciones__cancion img {
