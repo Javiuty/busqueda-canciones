@@ -51,6 +51,7 @@ const Form = ({ setUrlInput, setSongs }) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(InfoObj),
     });
 
