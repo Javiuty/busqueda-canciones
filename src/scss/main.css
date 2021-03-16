@@ -552,6 +552,7 @@ a {
   position: relative;
 }
 
+<<<<<<< HEAD
 .canciones__cancion .delete-song {
   cursor: pointer;
   color: red;
@@ -560,6 +561,14 @@ a {
   top: 0;
   right: 13px;
   font-family: Arial, Helvetica, sans-serif;
+=======
+.canciones__cancion p {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  font-size: 3rem;
+  color: red;
+>>>>>>> 9dc810a7920a59271ae8efbfc484f677b9123e5d
 }
 
 .canciones__cancion img {
@@ -610,7 +619,7 @@ a {
   opacity: 0.5;
   padding: 0.5rem 1rem;
   margin: 0 auto;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 }
 
 .canciones__cancion-title {
